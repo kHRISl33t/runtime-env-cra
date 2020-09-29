@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  client:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment: 
+      API_URL: http://my-awesome-api-in-ts-docker.com
+      NODE_ENV: production
+    ports:
+    - 80:80

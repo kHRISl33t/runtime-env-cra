@@ -1,5 +1,5 @@
 {
-  "name": "runtime-env-example",
+  "name": "runtime-env-example-js",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -8,10 +8,11 @@
     "@testing-library/user-event": "^7.2.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.3"
+    "react-scripts": "3.4.3",
+    "runtime-env-cra": "^0.1.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "NODE_ENV=development runtime-env-cra --config-name=./public/runtime-env.js && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
