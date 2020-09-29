@@ -2,6 +2,12 @@
 
 A runtime environment handler for React.js apps that have been bootstraped using [create-react-app](https://github.com/facebook/create-react-app).
 
+- [Usage](#usage)
+- [Requirements](#requirements)
+- [CLI Options](#cli-options)
+- [Using in a Typescript app](#typescript-usage)
+- [Usage in docker](#usage-in-docker)
+
 ## Usage
 
 - Installation
@@ -29,7 +35,7 @@ $ npm install runtime-env-cra
 ```
 
 The script parses everything based on your `.env` file and adds it to `window.__RUNTIME_CONFIG__`.
-If your `NODE_ENV` is `DEVELOPMENT` it will use the values from your `.env`, but if you provide anything else then `DEVELOPMENT` it will parse it from `process.env`. This way you can dynamically set your environment variables in production/staging environments without the need to rebuild your project.
+If you pass `NODE_ENV=DEVELOPMENT` for the script, it will use the values from your `.env`, but if you provide anything else than `DEVELOPMENT` or nothing for `NODE_ENV` it will parse environment variables from `process.env`. This way you can dynamically set your environment variables in production/staging environments without the need to rebuild your project.
 
 ## Requirements
 
@@ -40,7 +46,7 @@ This script uses your `.env` file by default to parse the environment variables 
 - Display the help section.
 
 ```sh
-$ runtime-env-cra -h
+$ runtime-env-cra --help | -h
 ```
 
 - Relative path and file name that will be generated. Default is `./runtime-env.js`
@@ -49,13 +55,13 @@ $ runtime-env-cra -h
 $ runtime-env-cra --config-name | -cn
 ```
 
-- Relative path and name of your `.env` file. Default is `./.env`
+- Relative path and name of your `env` file. Default is `./.env`
 
 ```sh
 $ runtime-env-cra --env-file | -ef
 ```
 
-## Using TypeScript
+## Typescript usage
 
 - Create `./src/types/globals.ts` file and pase the following (**modify the `__RUNTIME_CONFIG__` properties to match your environment**):
 
@@ -82,9 +88,9 @@ declare global {
 ```
 
 
-## Usage inside Docker
+## Usage in Docker
 
-You must have an example of your `.env` layout. A project usually have a `.env.example` which represents that. Inside a docker container we can relay on that.
+You must have an example of your `.env` layout. A project usually have a `.env.example` which represents that. Inside a docker container we can lean on the `.env.example`. **Make sure your `.env.example` is always represents the correct format!**
 
 ```Dockerfile
 # build
