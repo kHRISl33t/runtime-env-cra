@@ -6,7 +6,8 @@ A runtime environment handler for React.js apps that have been bootstraped using
 - [Requirements](#requirements)
 - [CLI Options](#cli-options)
 - [Using in a Typescript app](#typescript-usage)
-- [Usage in docker](#usage-in-docker)
+- [Usage in Docker](#usage-in-docker)
+- [Examples](#examples)
 
 ## Usage
 
@@ -90,35 +91,28 @@ declare global {
 
 ## Usage in Docker
 
-You must have an example of your `.env` layout. A project usually have a `.env.example` which represents that. Inside a docker container we can lean on the `.env.example`. **Make sure your `.env.example` is always represents the correct format!**
+You must have an example of your `env` layout. A project usually have a `.env.example` which represents that and will not contain any sensitive information.
+Inside a docker container we can lean on the `.env.example`. **Make sure your `.env.example` is always up to date!**
+
+- Using in an alpine based container
 
 ```Dockerfile
-# build
-FROM node:12.13.0-alpine as build
+# copy .env.example as .env to the container
+COPY .env.example .env
 
-WORKDIR /usr/src/app
-
-COPY package* ./
-COPY . .
-
-RUN npm i
-RUN npm run build
-
-# release
-FROM nginx:stable-alpine as release
-
-COPY --from=build /usr/src/app/build /usr/share/nginx/html
-COPY --from=build /usr/src/app/scripts /usr/share/nginx/html/scripts
-COPY --from=build /usr/src/app/.env.example /usr/share/nginx/html/.env
-COPY --from=build /usr/src/app/nginx/default.conf /etc/nginx/conf.d/default.conf
-
+# install bash, nodejs & npm
+RUN apk add --no-cache bash
 RUN apk add --update nodejs
+RUN apk add --update npm
 
+# install runtime-env-cra package
 RUN npm i -g runtime-env-cra
 
-WORKDIR /usr/share/nginx/html
-
-EXPOSE 80
-
-CMD ["runtime-env-cra && nginx -g \"daemon off;\""]
+# start the app with the following CMD
+CMD ["/bin/bash", "-c", "runtime-env-cra && nginx -g \"daemon off;\""]
 ```
+
+## Examples
+
+- Create react app with typescript template, including Dockerfile and docker-compose. ([source](/examples/runtime-env-example-ts))
+- Create react app without typescript, including Dockerfile and docker-compose. ([source](/examples/runtime-env-example-js))
