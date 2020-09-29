@@ -1,6 +1,6 @@
 {
   "name": "runtime-env-cra",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A runtime environment handler for create-react-apps",
   "main": "lib/index.js",
   "bin": "lib/index.js",
@@ -15,7 +15,15 @@
   "scripts": {
     "test": ""
   },
-  "keywords": ["runtime", "environment", "creat-react-app", "cra", "dynamic", "env", "handling"],
+  "keywords": [
+    "runtime",
+    "environment",
+    "creat-react-app",
+    "cra",
+    "dynamic",
+    "env",
+    "handling"
+  ],
   "author": "Kristof Ivancza (github.com/kHRISl33t)",
   "license": "ISC",
   "dependencies": {
