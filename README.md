@@ -36,7 +36,7 @@ $ npm install runtime-env-cra
 ```
 
 The script parses everything based on your `.env` file and adds it to `window.__RUNTIME_CONFIG__`.
-If you pass `NODE_ENV=DEVELOPMENT` for the script, it will use the values from your `.env`, but if you provide anything else than `DEVELOPMENT` or nothing for `NODE_ENV` it will parse environment variables from `process.env`. This way you can dynamically set your environment variables in production/staging environments without the need to rebuild your project.
+If you pass `NODE_ENV=development` for the script, it will use the values from your `.env`, but if you provide anything else than `development` or nothing for `NODE_ENV` it will parse environment variables from `process.env`. This way you can dynamically set your environment variables in production/staging environments without the need to rebuild your project.
 
 ## Requirements
 
@@ -100,8 +100,7 @@ Inside a docker container we can lean on the `.env.example`. **Make sure your `.
 # copy .env.example as .env to the container
 COPY .env.example .env
 
-# install bash, nodejs & npm
-RUN apk add --no-cache bash
+# install nodejs & npm
 RUN apk add --update nodejs
 RUN apk add --update npm
 
@@ -109,7 +108,7 @@ RUN apk add --update npm
 RUN npm i -g runtime-env-cra
 
 # start the app with the following CMD
-CMD ["/bin/bash", "-c", "runtime-env-cra && nginx -g \"daemon off;\""]
+CMD ["/bin/sh", "-c", "runtime-env-cra && nginx -g \"daemon off;\""]
 ```
 
 ## Examples
