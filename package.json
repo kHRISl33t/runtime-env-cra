@@ -13,7 +13,8 @@
   },
   "homepage": "https://github.com/kHRISl33t/runtime-env-cra",
   "scripts": {
-    "test": "",
+    "test": "jest --coverage",
+    "test:watch": "jest --watch",
     "lint": "eslint \"{lib,test}/**/*.js\"",
     "lint:fix": "eslint \"{lib,test}/**/*.js\" --fix"
   },
@@ -40,6 +41,7 @@
     "eslint": "^7.10.0",
     "eslint-config-prettier": "^6.12.0",
     "eslint-plugin-prettier": "^3.1.4",
+    "jest": "^26.5.2",
     "prettier": "^2.1.2"
   }
 }
