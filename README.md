@@ -106,7 +106,7 @@ RUN apk add --update nodejs
 RUN apk add --update npm
 
 # install runtime-env-cra package
-RUN npm i -g runtime-env-cra
+RUN npm i -g runtime-env-cra@0.2.0
 
 # start the app with the following CMD
 CMD ["/bin/sh", "-c", "runtime-env-cra && nginx -g \"daemon off;\""]
