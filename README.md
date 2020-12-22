@@ -8,6 +8,8 @@ A runtime environment handler for React.js apps that have been bootstraped using
 - [Using in a Typescript app](#typescript-usage)
 - [Usage in Docker](#usage-in-docker)
 - [Examples](#examples)
+- [Test Coverage](#test-coverage)
+- [Contributors](#contributors)
 
 ## Usage
 
@@ -20,8 +22,8 @@ $ npm install runtime-env-cra
 - Add the following to `public/index.html` inside the `<head>` tag:
 
 ```html
-    <!-- Runtime environment variables -->
-    <script src="%PUBLIC_URL%/runtime-env.js"></script>
+<!-- Runtime environment variables -->
+<script src="%PUBLIC_URL%/runtime-env.js"></script>
 ```
 
 - Modify your `start` script to the following in your `package.json`:
@@ -88,7 +90,6 @@ declare global {
 }
 ```
 
-
 ## Usage in Docker
 
 You must have an example of your `env` layout. A project usually have a `.env.example` which represents that and will not contain any sensitive information.
@@ -115,3 +116,27 @@ CMD ["/bin/sh", "-c", "runtime-env-cra && nginx -g \"daemon off;\""]
 
 - Create react app with typescript template, including Dockerfile and docker-compose. ([source](/examples/runtime-env-example-ts))
 - Create react app without typescript, including Dockerfile and docker-compose. ([source](/examples/runtime-env-example-js))
+
+## Test coverage
+
+```bash
+-------------------|---------|----------|---------|---------|-------------------
+File               | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s
+-------------------|---------|----------|---------|---------|-------------------
+All files          |     100 |      100 |     100 |     100 |
+ generateConfig.js |     100 |      100 |     100 |     100 |
+ utils.js          |     100 |      100 |     100 |     100 |
+-------------------|---------|----------|---------|---------|-------------------
+Test Suites: 1 passed, 1 total
+Tests:       5 passed, 5 total
+Snapshots:   0 total
+Time:        1.751 s
+```
+
+## Contributors
+
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/peteyycz"><img src="https://avatars1.githubusercontent.com/u/7130689?v=4" width="50px;" alt=""/><br /><sub><b>peteyycz</b></sub></a><br />
+  </tr>
+</table>
