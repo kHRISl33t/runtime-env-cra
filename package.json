@@ -18,7 +18,8 @@
     "lint": "eslint \"{lib,test}/**/*.js\"",
     "lint:fix": "eslint \"{lib,test}/**/*.js\" --fix",
     "packages:check": "npx npm-check-updates",
-    "packages:upgrade": "npx npm-check-updates -u"
+    "packages:upgrade": "npx npm-check-updates -u",
+    "update-runtime-env-cra": "npx np"
   },
   "keywords": [
     "runtime",
