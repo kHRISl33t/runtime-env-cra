@@ -4,6 +4,7 @@ module.exports = {
     es6: true,
     node: true,
   },
+  plugins: ['jest'],
   extends: ['eslint:recommended', 'plugin:prettier/recommended'],
   parserOptions: {
     ecmaVersion: 12,
