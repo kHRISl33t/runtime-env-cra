@@ -13,10 +13,12 @@
   },
   "homepage": "https://github.com/kHRISl33t/runtime-env-cra",
   "scripts": {
-    "test": "jest --coverage",
+    "test": "jest --coverage --silent --config jest.config.js",
     "test:watch": "jest --watch",
     "lint": "eslint \"{lib,test}/**/*.js\"",
-    "lint:fix": "eslint \"{lib,test}/**/*.js\" --fix"
+    "lint:fix": "eslint \"{lib,test}/**/*.js\" --fix",
+    "packages:check": "npx npm-check-updates",
+    "packages:upgrade": "npx npm-check-updates -u"
   },
   "keywords": [
     "runtime",
@@ -30,7 +32,7 @@
   "author": "Kristof Ivancza (github.com/kHRISl33t)",
   "license": "ISC",
   "dependencies": {
-    "yargs": "^16.0.3"
+    "yargs": "^16.2.0"
   },
   "files": [
     "lib",
@@ -38,10 +40,11 @@
     "package-lock.json"
   ],
   "devDependencies": {
-    "eslint": "^7.10.0",
-    "eslint-config-prettier": "^6.12.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "jest": "^26.5.2",
-    "prettier": "^2.1.2"
+    "eslint": "^7.16.0",
+    "eslint-config-prettier": "^7.1.0",
+    "eslint-plugin-prettier": "^3.3.0",
+    "jest": "^26.6.3",
+    "jest-junit": "^12.0.0",
+    "prettier": "^2.2.1"
   }
 }
