@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 const fs = require('fs').promises;
 const generateConfig = require('../lib/generateConfig');
 
