@@ -19,7 +19,7 @@ COPY --from=build /usr/src/app/nginx/default.conf /etc/nginx/conf.d/default.conf
 
 RUN apk add --update nodejs
 RUN apk add --update npm
-RUN npm i -g runtime-env-cra
+RUN npm i -g runtime-env-cra@0.2.0
 
 WORKDIR /usr/share/nginx/html
 
