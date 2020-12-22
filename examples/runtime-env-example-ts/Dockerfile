@@ -17,7 +17,6 @@ COPY --from=build /usr/src/app/build /usr/share/nginx/html
 COPY --from=build /usr/src/app/.env.example /usr/share/nginx/html/.env
 COPY --from=build /usr/src/app/nginx/default.conf /etc/nginx/conf.d/default.conf
 
-RUN apk add --no-cache bash
 RUN apk add --update nodejs
 RUN apk add --update npm
 RUN npm i -g runtime-env-cra
@@ -26,4 +25,4 @@ WORKDIR /usr/share/nginx/html
 
 EXPOSE 80
 
-CMD ["/bin/bash", "-c", "runtime-env-cra && nginx -g \"daemon off;\""]
+CMD ["/bin/sh", "-c", "runtime-env-cra && nginx -g \"daemon off;\""]

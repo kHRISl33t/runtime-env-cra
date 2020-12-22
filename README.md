@@ -8,6 +8,8 @@ A runtime environment handler for React.js apps that have been bootstraped using
 - [Using in a Typescript app](#typescript-usage)
 - [Usage in Docker](#usage-in-docker)
 - [Examples](#examples)
+- [Test Coverage](#test-coverage)
+- [Contributors](#contributors)
 
 ## Usage
 
@@ -20,8 +22,8 @@ $ npm install runtime-env-cra
 - Add the following to `public/index.html` inside the `<head>` tag:
 
 ```html
-    <!-- Runtime environment variables -->
-    <script src="%PUBLIC_URL%/runtime-env.js"></script>
+<!-- Runtime environment variables -->
+<script src="%PUBLIC_URL%/runtime-env.js"></script>
 ```
 
 - Modify your `start` script to the following in your `package.json`:
@@ -36,7 +38,7 @@ $ npm install runtime-env-cra
 ```
 
 The script parses everything based on your `.env` file and adds it to `window.__RUNTIME_CONFIG__`.
-If you pass `NODE_ENV=DEVELOPMENT` for the script, it will use the values from your `.env`, but if you provide anything else than `DEVELOPMENT` or nothing for `NODE_ENV` it will parse environment variables from `process.env`. This way you can dynamically set your environment variables in production/staging environments without the need to rebuild your project.
+If you pass `NODE_ENV=development` for the script, it will use the values from your `.env`, but if you provide anything else than `development` or nothing for `NODE_ENV` it will parse environment variables from `process.env`. This way you can dynamically set your environment variables in production/staging environments without the need to rebuild your project.
 
 ## Requirements
 
@@ -88,7 +90,6 @@ declare global {
 }
 ```
 
-
 ## Usage in Docker
 
 You must have an example of your `env` layout. A project usually have a `.env.example` which represents that and will not contain any sensitive information.
@@ -100,8 +101,7 @@ Inside a docker container we can lean on the `.env.example`. **Make sure your `.
 # copy .env.example as .env to the container
 COPY .env.example .env
 
-# install bash, nodejs & npm
-RUN apk add --no-cache bash
+# install nodejs & npm
 RUN apk add --update nodejs
 RUN apk add --update npm
 
@@ -109,10 +109,34 @@ RUN apk add --update npm
 RUN npm i -g runtime-env-cra
 
 # start the app with the following CMD
-CMD ["/bin/bash", "-c", "runtime-env-cra && nginx -g \"daemon off;\""]
+CMD ["/bin/sh", "-c", "runtime-env-cra && nginx -g \"daemon off;\""]
 ```
 
 ## Examples
 
 - Create react app with typescript template, including Dockerfile and docker-compose. ([source](/examples/runtime-env-example-ts))
 - Create react app without typescript, including Dockerfile and docker-compose. ([source](/examples/runtime-env-example-js))
+
+## Test coverage
+
+```bash
+-------------------|---------|----------|---------|---------|-------------------
+File               | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s
+-------------------|---------|----------|---------|---------|-------------------
+All files          |     100 |      100 |     100 |     100 |
+ generateConfig.js |     100 |      100 |     100 |     100 |
+ utils.js          |     100 |      100 |     100 |     100 |
+-------------------|---------|----------|---------|---------|-------------------
+Test Suites: 1 passed, 1 total
+Tests:       5 passed, 5 total
+Snapshots:   0 total
+Time:        1.751 s
+```
+
+## Contributors
+
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/peteyycz"><img src="https://avatars1.githubusercontent.com/u/7130689?v=4" width="50px;" alt=""/><br /><sub><b>peteyycz</b></sub></a><br />
+  </tr>
+</table>

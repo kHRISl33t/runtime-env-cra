@@ -1,2 +1,6 @@
 node_modules
 .DS_Store
+TODO.md
+article.md
+coverage-report
+junit.xml

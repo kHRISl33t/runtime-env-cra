@@ -7,6 +7,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ```sh
 $ npm i
 $ npm start
+# if it fails to start insert `SKIP_PREFLIGHT_CHECK=true` before `npm start`
 ```
 
 - Open [http://localhost:3000](http://localhost:3000), to check out the result.
