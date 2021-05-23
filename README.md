@@ -11,6 +11,11 @@ A runtime environment handler for React.js apps that have been bootstraped using
 - [Test Coverage](#test-coverage)
 - [Contributors](#contributors)
 
+## Requirements
+
+- Node.js 8.X or greater
+- npm 5.X or greater
+
 ## Usage
 
 - Installation
@@ -106,7 +111,7 @@ RUN apk add --update nodejs
 RUN apk add --update npm
 
 # install runtime-env-cra package
-RUN npm i -g runtime-env-cra@0.2.0
+RUN npm i -g runtime-env-cra@0.2.2
 
 # start the app with the following CMD
 CMD ["/bin/sh", "-c", "runtime-env-cra && nginx -g \"daemon off;\""]
@@ -140,3 +145,5 @@ Time:        1.751 s
     <td align="center"><a href="https://github.com/peteyycz"><img src="https://avatars1.githubusercontent.com/u/7130689?v=4" width="50px;" alt=""/><br /><sub><b>peteyycz</b></sub></a><br />
   </tr>
 </table>
+
+**_If you find a bug or have a question about the usage, feel free to open an issue!_**
