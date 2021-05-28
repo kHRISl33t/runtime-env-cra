@@ -2,6 +2,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 # Runtime-env-example-ts
 
+## Requirements
+
+- Node 12 or greater
+
 ## Usage
 
 ```sh

@@ -2,6 +2,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 # Runtime-env-example-js
 
+## Requirements
+
+- Node 12 or greater
+
 ## Usage
 
 ```sh
@@ -27,4 +31,3 @@ $ docker-compose up
 ```
 
 - Open [http://localhost:80](http://localhost:80), to check out the result.
-

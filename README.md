@@ -11,12 +11,9 @@ A runtime environment handler for React.js apps that have been bootstraped using
 - [Test Coverage](#test-coverage)
 - [Contributors](#contributors)
 
-## Requirements
-
-- Node.js 8.X or greater
-- npm 5.X or greater
-
 ## Usage
+
+- Supported node.js versions due to `yargs` is 12 or greater
 
 - Installation
 
