@@ -1,9 +1,9 @@
 const generateConfig = require('../lib/generateConfig');
-const { unlinkP } = require('../lib/utils');
+const { promises: fsp } = require('fs');
 
 describe('runtime-env-cra', () => {
   afterAll(async () => {
-    await unlinkP('./tests/utils/runtime-config.js').catch(() => { });
+    await fsp.unlink('./tests/utils/runtime-config.js').catch(() => { });
   });
 
   beforeEach(() => {
