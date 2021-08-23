@@ -1,6 +1,6 @@
 {
   "name": "runtime-env-cra",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "A runtime environment handler for create-react-apps",
   "main": "lib/index.js",
   "bin": "lib/index.js",
