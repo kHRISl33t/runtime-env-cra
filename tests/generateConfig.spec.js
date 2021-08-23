@@ -107,4 +107,32 @@ describe('runtime-env-cra', () => {
       'window.__RUNTIME_CONFIG__ = {"TEST_VAR":"TEST_VALUE"};',
     );
   });
+
+  it('should parse a CRLF .env file successfully', async () => {
+    process.env.NODE_ENV = 'development';
+
+    const config = await generateConfig({
+      envConfig: './tests/utils/runtime-config.js',
+      envFile: './tests/utils/.env.crlf',
+    });
+
+    expect(config).toBeDefined();
+    expect(config).toEqual(
+      'window.__RUNTIME_CONFIG__ = {"TEST_VAR":"TEST_VALUE"};',
+    );
+  });
+
+  it('should ignore .env file comments and ignore EOL whitespace', async () => {
+    process.env.NODE_ENV = 'development';
+
+    const config = await generateConfig({
+      envConfig: './tests/utils/runtime-config.js',
+      envFile: './tests/utils/.env.comments',
+    });
+
+    expect(config).toBeDefined();
+    expect(config).toEqual(
+      'window.__RUNTIME_CONFIG__ = {"TEST_VAR":"TEST_VALUE","TEST_VAR2":"TEST_VALUE2","TEST_VAR3":"a full sentence with spaces and\\t\\ttabs"};',
+    );
+  });
 });
