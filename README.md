@@ -13,6 +13,8 @@ A runtime environment handler for React.js apps that have been bootstraped using
 
 ## Usage
 
+The `runtime-env-cra` package was meant to be used in Docker or VM based environments, where you have full control over how your application will start. Sadly, `runtime-env-cra` can not be used if you are using S3 or another static file serving solution.
+
 - Supported node.js versions due to `yargs` is 12 or greater
 
 - Installation
@@ -37,6 +39,15 @@ $ npm install runtime-env-cra
   ...
 }
 ...
+```
+
+- If you are on windows, you need to use [cross-env](https://github.com/kentcdodds/cross-env)
+
+```json
+"scripts": {
+  "start": "cross-env NODE_ENV=development runtime-env-cra --config-name=./public/runtime-env.js && react-scripts start",
+  ...
+}
 ```
 
 The script parses everything based on your `.env` file and adds it to `window.__RUNTIME_CONFIG__`.
@@ -139,7 +150,9 @@ Time:        1.751 s
 
 <table>
   <tr>
+    <td align="center"><a href="https://github.com/kHRISl33t"><img src="https://avatars.githubusercontent.com/u/30027430?v=4" width="50px;" alt=""/><br /><sub><b>kHRISl33t</b></sub></a><br />
     <td align="center"><a href="https://github.com/peteyycz"><img src="https://avatars1.githubusercontent.com/u/7130689?v=4" width="50px;" alt=""/><br /><sub><b>peteyycz</b></sub></a><br />
+    <td align="center"><a href="https://github.com/seanblonien"><img src="https://avatars.githubusercontent.com/u/33133478?v=4" width="50px;" alt=""/><br /><sub><b>seanblonien</b></sub></a><br />
   </tr>
 </table>
 
