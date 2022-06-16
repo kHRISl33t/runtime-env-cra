@@ -135,4 +135,18 @@ describe('runtime-env-cra', () => {
       'window.__RUNTIME_CONFIG__ = {"TEST_VAR":"TEST_VALUE","TEST_VAR2":"TEST_VALUE2","TEST_VAR3":"a full sentence with spaces and\\t\\ttabs"};',
     );
   });
+
+  it('should trim with spaces', async () => {
+    process.env.NODE_ENV = 'development';
+
+    const config = await generateConfig({
+      envConfig: './tests/utils/runtime-config.js',
+      envFile: './tests/utils/.env.trim',
+    });
+
+    expect(config).toBeDefined();
+    expect(config).toEqual(
+      'window.__RUNTIME_CONFIG__ = {"TEST_VAR":"TEST_VALUE","TEST_VAR2":"TEST_VALUE2","TEST_VAR3":"TEST_VALUE3"};',
+    );
+  });
 });
