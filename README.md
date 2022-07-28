@@ -115,6 +115,8 @@ Because this consumes the generated `runtime-env.js` file, it is also wise to ad
 }
 ```
 
+*Note*: if you want to run tests for each environment, you'd have to generate the runtime environment variables for each environment.
+
 ## Typescript usage
 
 - Create `./src/types/globals.ts` file and pase the following (**modify the `__RUNTIME_CONFIG__` properties to match your environment**):
