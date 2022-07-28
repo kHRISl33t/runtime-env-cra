@@ -5,6 +5,7 @@ A runtime environment handler for React.js apps that have been bootstraped using
 - [Usage](#usage)
 - [Requirements](#requirements)
 - [CLI Options](#cli-options)
+- [Usage with Jest](#usage-with-jest)
 - [Using in a Typescript app](#typescript-usage)
 - [Usage in Docker](#usage-in-docker)
 - [Examples](#examples)
