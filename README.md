@@ -108,9 +108,9 @@ Because this consumes the generated `runtime-env.js` file, it is also wise to ad
 {
   "scripts": {
     "env:dev": "cross-env NODE_ENV=development runtime-env-cra --config-name ./public/runtime-env.js",
-
     "start": "npm run env:dev && react-scripts start",
     "test": "npm run env:dev && react-scripts test",
+    ...
   }
 }
 ```
