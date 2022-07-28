@@ -5,6 +5,7 @@ A runtime environment handler for React.js apps that have been bootstraped using
 - [Usage](#usage)
 - [Requirements](#requirements)
 - [CLI Options](#cli-options)
+- [Usage with Jest](#usage-with-jest)
 - [Using in a Typescript app](#typescript-usage)
 - [Usage in Docker](#usage-in-docker)
 - [Examples](#examples)
@@ -33,20 +34,22 @@ $ npm install runtime-env-cra
 - Modify your `start` script to the following in your `package.json`:
 
 ```json
-...
-"scripts": {
-  "start": "NODE_ENV=development runtime-env-cra --config-name=./public/runtime-env.js && react-scripts start",
-  ...
+{
+  "scripts": {
+    "start": "NODE_ENV=development runtime-env-cra --config-name=./public/runtime-env.js && react-scripts start",
+    ...
+  }
 }
-...
 ```
 
 - If you are on windows, you need to use [cross-env](https://github.com/kentcdodds/cross-env)
 
 ```json
-"scripts": {
-  "start": "cross-env NODE_ENV=development runtime-env-cra --config-name=./public/runtime-env.js && react-scripts start",
-  ...
+{
+  "scripts": {
+    "start": "cross-env NODE_ENV=development runtime-env-cra --config-name=./public/runtime-env.js && react-scripts start",
+    ...
+  }
 }
 ```
 
@@ -76,6 +79,43 @@ $ runtime-env-cra --config-name | -cn
 ```sh
 $ runtime-env-cra --env-file | -ef
 ```
+
+## Usage with Jest
+
+If you're using the default Jest setup that comes with with `create-react-app`, you will have a default `setupTests.js` file that you can use to include your runtime environment variables (since `index.html` doesn't load for pure JavaScript tests).
+
+In `setupTests.js`, you can import the `runtime-env.js` directly from where it is generated.
+
+```js
+// Because run-time environment variables are dynamically loaded by index.html when
+// serving the app, we need to also load them into our JavaScript-only test environment
+// as well.
+import '../public/runtime-env.js';
+```
+
+If you follow the default folder structure, this will be that file layout.
+
+```js
+└── public/
+    ├── runtime-env.js
+└── src/
+    ├── setupTests.js
+```
+
+Because this consumes the generated `runtime-env.js` file, it is also wise to add the `runtime-env-cra` command to run before both your tests and your start command.
+
+```json
+{
+  "scripts": {
+    "env:dev": "cross-env NODE_ENV=development runtime-env-cra --config-name ./public/runtime-env.js",
+    "start": "npm run env:dev && react-scripts start",
+    "test": "npm run env:dev && react-scripts test",
+    ...
+  }
+}
+```
+
+*Note*: if you want to run tests for each environment, you'd have to generate the runtime environment variables for each environment.
 
 ## Typescript usage
 
